@@ -9,6 +9,7 @@ from pygame.locals import *
 
 # 自作モジュールの読み込み
 from load_resources import load_png_image
+#from game_object import menu
 
 # ロガーの設定
 logger = logging.getLogger(__file__)
@@ -32,7 +33,13 @@ def init_start_menu():
     # スタートメニュー画面の読み込み
     start_image, start_image_rect = load_png_image(os.path.join(IMAGE_PATH, "start_menu_tmp.png"))
     screen.blit(start_image, start_image_rect.move(0, 0))
+    # マウスを見えるようにする。
+    pygame.mouse.set_visible(True)
     pygame.display.flip()
+
+    # スタートメニューのメニュー画面の表示
+
+
 
     while True:
         for event in pygame.event.get():
@@ -40,6 +47,10 @@ def init_start_menu():
                 logger.info("イベント{}が検知されました。".format(event.type))
             if (event.type == KEYDOWN and event.key == K_ESCAPE):
                 return sys.exit(1) # ESCAPEキーが押されたら終了
+            if (event.type == MOUSEBUTTONDOWN):
+                if 300 <= pygame.mouse.get_pos()[0]:
+                    print("clicked")
+                    return sys.exit()
             if event.type == MOUSEBUTTONDOWN:
                 pass
         pygame.display.flip()
