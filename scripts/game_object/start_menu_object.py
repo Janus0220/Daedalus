@@ -16,6 +16,7 @@ SCRIPT_PATH = os.path.join(MODULE_PATH, "scripts")
 # 自作モジュールの読み込み
 sys.path.append(SCRIPT_PATH)
 from load_resources import load_png_image
+from main_game import init_main_game
 
 # ロガーの設定
 logger = logging.getLogger(__file__)
@@ -40,8 +41,7 @@ class StartGameMenu(pygame.sprite.Sprite):
     def update(self):
         self.change_image_on_mouse()
         if self.clicked:
-            # TODO ゲームの開始を宣言する。
-            pass
+            init_main_game()
 
     def click(self, click_x, click_y):
         hitbox = self.rect

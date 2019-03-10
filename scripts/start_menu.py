@@ -57,13 +57,17 @@ def init_start_menu():
                 return sys.exit(1)  # ESCAPEキーが押されたら終
 
             if (event.type == MOUSEBUTTONDOWN):
-                start_menu.click(pos[0], pos[1])
-                setting_menu.click(pos[0], pos[1])
-                exit_menu.click(pos[0], pos[1])
+                """
+                if currentPlayer.cliked:
+                elif board.cliked:
+                
+                
+                """
 
             allsprites.update()
             allsprites.draw(screen)
             pygame.display.flip()
+
 
 if __name__ == '__main__':
     init_start_menu()
