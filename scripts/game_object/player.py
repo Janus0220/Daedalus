@@ -26,6 +26,11 @@ SCREEN_HEIGHT = 500  # 画面の高さ
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, player_pos, player_color):
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = load_png_image(os.path.join(IMAGE_PATH, "wall.png"))
+        self.image, self.rect = load_png_image(os.path.join(IMAGE_PATH, "player_{}.png".format(player_color)))
+        self.rect.center = player_pos
+        self.clicked = False
+
+    def update(self):
+        pass

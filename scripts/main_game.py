@@ -11,6 +11,8 @@ from pygame.locals import *
 # 自作モジュールの読み込み
 from load_resources import load_png_image
 from game_object.board import Board
+from game_object.player import Player
+from game_object.wall import Wall
 
 # ロガーの設定
 logger = logging.getLogger(__file__)
@@ -36,9 +38,34 @@ def init_main_game():
     # ゲームオブジェクトの開始
     board = Board()
     board.init_board(screen)
-    allsprites = pygame.sprite.RenderPlain((board))
+    """
+    allsprites = pygame.sprite.RenderPlain()
     allsprites.draw(screen)
+    """
     pygame.display.flip()
+
+    # ゲーム情報の初期化
+    player1_pos = 6
+    player2_pos = 20*21 + 6
+    #player1 = Player(player1_pos, "red")
+    #player2 = Player(player2_pos, "blue")
+    """
+    構造
+    player1の描画
+    player2の描画
+    
+    WallかPlayerスイッチの選択
+        WallならばWallの位置を選択する
+        Boardインスタンスがその場所にWallがおけるか判定する。
+            Boardインスタンスの情報を更新する。 / 出来なければ、エラーを表示する。
+        Playerインスタンスの情報を更新する。
+        
+        PlayerならばPlayerの位置の候補を選択する
+        以後同じ
+        
+    
+    
+    """
 
     # メインループ
     while True:
@@ -47,6 +74,7 @@ def init_main_game():
             if (event.type == KEYDOWN and event.key == K_ESCAPE) or (event.type == QUIT):
                 return sys.exit(1)
 
-        allsprites.update()
-        allsprites.draw(screen)
+
+        #allsprites.update()
+        #allsprites.draw(screen)
         pygame.display.flip()

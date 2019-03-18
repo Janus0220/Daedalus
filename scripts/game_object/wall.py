@@ -25,7 +25,6 @@ SCREEN_WIDTH = 1000  # 画面の横幅
 SCREEN_HEIGHT = 500  # 画面の高さ
 
 
-class Wall(pygame.sprite.Sprite):
+class Wall:
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
         self.image, self.rect = load_png_image(os.path.join(IMAGE_PATH, "wall.png"))
